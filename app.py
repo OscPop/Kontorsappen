@@ -13,8 +13,8 @@ import datetime
 load_dotenv()
 
 
-IMAS_USERNAME = os.environ.get("IMAS_USERNAME")
-IMAS_PASSWORD = os.environ.get("IMAS_PASSWORD")
+IMAS_USERNAME = st.secrets["IMAS_USERNAME"] #os.environ.get("IMAS_USERNAME")
+IMAS_PASSWORD = st.secrets["IMAS_PASSWORD"] #os.environ.get("IMAS_PASSWORD")
 
 
 # Autentisering
