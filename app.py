@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import requests
 import seaborn as sns
 import pandas as pd
@@ -10,7 +10,7 @@ import json
 import datetime
 
 
-load_dotenv()
+#load_dotenv()
 
 
 IMAS_USERNAME = st.secrets["IMAS_USERNAME"] #os.environ.get("IMAS_USERNAME")
