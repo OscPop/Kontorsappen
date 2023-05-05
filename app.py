@@ -93,10 +93,11 @@ def proc():
         avg_minutes_person = df.query("current > 0").current.sum() / max_pers
         avg_hours, avg_minutes = avg_minutes_person //60, (avg_minutes_person-60 * (avg_minutes_person // 60))
 
-        textstr = f"""Genomsnittlig kontorstid*:\n{int(avg_hours)} h {int(avg_minutes)} min
-    Maxbeläggning:\n{max_pers} personer (kl. {max_pers_tid})
-    Tidigaste aktivitet: {tidigast}
-    Senaste aktivitet:   {senast}"""
+        textstr = f"""
+Genomsnittlig kontorstid*:\n{int(avg_hours)} h {int(avg_minutes)} min
+Maxbeläggning:\n{max_pers} personer (kl. {max_pers_tid})
+Tidigaste aktivitet: {tidigast}
+Senaste aktivitet:   {senast}"""
 
     else:
         textstr = f"""Ingen aktivitet på 
@@ -125,11 +126,11 @@ Vi kan inte se vem som passerar sensorn, endast hur många som går förbi.
 
 # Datumväljare
 st.date_input("Välj datum",
-                    value=datetime.date.today(), 
-                    min_value=pd.to_datetime("2022-11-15").date(), # Först dagen
-                    max_value=pd.to_datetime("today").date(),      # Idag
-                    on_change=proc,
-                    key="date")
+                value=datetime.date.today(), 
+                min_value=pd.to_datetime("2022-11-15").date(), # Först dagen
+                max_value=pd.to_datetime("today").date(),      # Idag
+                on_change=proc,
+                key="date")
 
 
 # Rita en graf
