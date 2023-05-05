@@ -36,6 +36,10 @@ if "auth_token" not in st.session_state:
 
 
 def proc():
+    """
+    Hämtar data från IMAS API och ritar en graf, "fig", som sparas i session_state.
+    """
+
     interval = 1    # Upplösning i minuter 
     
     date_str = st.session_state.date.strftime("%Y-%m-%dT00")
@@ -108,6 +112,8 @@ def proc():
 
 
 
+# Appens utseende
+
 st.title("Kontorsaktivitet")
 
 st.write("""
@@ -116,13 +122,16 @@ Det är enbart data från sensorn vid inpasseringsgrinden i entrén som används
 Vi kan inte se vem som passerar sensorn, endast hur många som går förbi.
 """)
 
+
+# Datumväljare
 st.date_input("Välj datum",
                     value=datetime.date.today(), 
-                    min_value=pd.to_datetime("2022-11-01").date(), 
-                    max_value=pd.to_datetime("today").date(),
+                    min_value=pd.to_datetime("2022-11-15").date(), # Först dagen
+                    max_value=pd.to_datetime("today").date(),      # Idag
                     on_change=proc,
                     key="date")
 
 
+# Rita en graf
 if "fig" in st.session_state:
     st.pyplot(st.session_state.fig)
